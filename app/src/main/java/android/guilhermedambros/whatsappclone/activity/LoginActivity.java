@@ -1,7 +1,12 @@
 package android.guilhermedambros.whatsappclone.activity;
 
+import android.Manifest;
+import android.content.DialogInterface;
+import android.content.pm.PackageManager;
+import android.guilhermedambros.whatsappclone.helper.Permissao;
 import android.guilhermedambros.whatsappclone.helper.Preferencias;
 import android.os.StrictMode;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.guilhermedambros.whatsappclone.R;
@@ -25,11 +30,17 @@ public class LoginActivity extends AppCompatActivity {
     private EditText codigo;
     private EditText nome;
     private Button cadastrar;
+    private String[] permissoesNecessarias = new String[]{
+            Manifest.permission.SEND_SMS,
+            Manifest.permission.INTERNET
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        Permissao.validaPermissoes(1, this, permissoesNecessarias);
 
         telefone = (EditText) findViewById(R.id.edit_telefone);
         ddd = (EditText) findViewById(R.id.edit_ddd);
@@ -96,5 +107,38 @@ public class LoginActivity extends AppCompatActivity {
             e.printStackTrace();
             return false;
         }
+    }
+
+
+    //recebe o retorno da posição do usuário perante as permissões solicitadas pelo APP
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults){
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        for (int resultado:grantResults){//percorre os resultados das permissões
+            if (resultado == PackageManager.PERMISSION_DENIED){//quando uma é negada
+                alertaValidacaoPermissao();
+
+            }
+
+
+        }
+
+    }
+
+    //Alerta sobre a necessidade da permissão e finaliza a Activity
+    private void alertaValidacaoPermissao(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Permissões negadas!");
+        builder.setMessage("Para utilizar esse APP é necessário aceitar as permissões.");
+
+        builder.setPositiveButton("CONFIRMAR", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }
