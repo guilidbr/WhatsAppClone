@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context="android.guilhermedambros.whatsappclone.activity.LoginActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="@dimen/largura_logo"
+        android:layout_height="@dimen/altura_logo"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        app:srcCompat="@drawable/logo"
+        android:textColor="@color/textColorPrimary"/>
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="51dp"
+        android:ems="10"
+        android:hint="Digite seu nome."
+        android:inputType="textPersonName"
+        android:layout_below="@+id/imageView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColor="@color/textColorPrimary"
+        android:paddingLeft="@dimen/padding_padrao"
+        android:paddingRight="@dimen/padding_padrao"/>
+
+    <EditText
+        android:id="@+id/editText4"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="+55"
+        android:inputType="number"
+        android:layout_below="@+id/editText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColor="@color/textColorPrimary"/>
+
+    <EditText
+        android:id="@+id/editText5"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="7dp"
+        android:layout_marginStart="7dp"
+        android:ems="10"
+        android:hint="11"
+        android:inputType="number"
+        android:layout_alignBaseline="@+id/editText4"
+        android:layout_alignBottom="@+id/editText4"
+        android:layout_toRightOf="@+id/editText4"
+        android:layout_toEndOf="@+id/editText4"
+        android:textColor="@color/textColorPrimary"/>
+
+    <EditText
+        android:id="@+id/editText6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editText5"
+        android:layout_alignBottom="@+id/editText5"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_toEndOf="@+id/editText5"
+        android:layout_toRightOf="@+id/editText5"
+        android:ems="10"
+        android:hint="996048967"
+        android:inputType="number"
+        android:textColor="@color/textColorPrimary"
+        android:paddingRight="@dimen/padding_padrao"/>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText5"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="@string/botao_cadastrar"
+        android:textColor="@color/textColorPrimary"
+        android:paddingLeft="@dimen/padding_padrao"
+        android:paddingRight="@dimen/padding_padrao"/>
+
+</RelativeLayout>

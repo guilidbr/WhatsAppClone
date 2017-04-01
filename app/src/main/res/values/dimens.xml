@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="largura_logo">200dp</dimen>
+    <dimen name="altura_logo">163dp</dimen>
+    <dimen name="padding_padrao">20dp</dimen>
+    <dimen name="fonte_padrao_maior">30dp</dimen>
+    <dimen name="fonte_padrao_menor">15dp</dimen>
+</resources>
