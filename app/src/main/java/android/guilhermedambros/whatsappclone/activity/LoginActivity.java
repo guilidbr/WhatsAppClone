@@ -2,6 +2,7 @@ package android.guilhermedambros.whatsappclone.activity;
 
 import android.Manifest;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.guilhermedambros.whatsappclone.helper.Permissao;
 import android.guilhermedambros.whatsappclone.helper.Preferencias;
@@ -15,6 +16,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
@@ -85,7 +87,15 @@ public class LoginActivity extends AppCompatActivity {
                 preferencias.salvarUsuarioPreferencias(nomeUsuario, telefoneCompleto, token);
 
                 //Envio do SMS
+                //telefoneSemFormatacao = "5554";
                 boolean smsEnviado = enviaSMS("+"+telefoneSemFormatacao, msgEnvio);
+                if (smsEnviado){
+                    Intent intent = new Intent(LoginActivity.this, ValidadorActivity.class);
+                    startActivity(intent);
+                    finish();
+                }else{
+                    Toast.makeText(LoginActivity.this, "Problema ao enviar o SMS! Tente novamente!", Toast.LENGTH_LONG).show();
+                }
 
 
                 //HashMap<String, String> usuario = preferencias.getDadosUsuario();
