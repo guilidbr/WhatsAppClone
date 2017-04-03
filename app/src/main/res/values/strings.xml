@@ -5,4 +5,8 @@
     <string name="texto_validacao_abaixo">Você recebeu um código SMS para validação, digite o código de validação abaixo</string>
     <string name="botao_logar">LOGAR</string>
     <string name="texto_cadastre">Não tem conta? Cadastre-se.</string>
+    <string name="action_settings">Configurações</string>
+    <string name="action_sair">Sair</string>
+    <string name="action_add_person">Adicionar Usuário</string>
+    <string name="action_search">Pesquisar</string>
 </resources>

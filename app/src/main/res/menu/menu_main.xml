@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/action_settings"
+        android:title="@string/action_settings"
+        android:orderInCategory="100" app:showAsAction="never"/>
+
+    <item android:id="@+id/action_sair"
+        android:title="@string/action_sair"
+        android:orderInCategory="200" app:showAsAction="never"/>
+
+    <item android:id="@+id/action_pesquisa"
+        android:title="@string/action_search"
+        android:orderInCategory="300" app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_search"/>
+
+
+    <item android:id="@+id/action_add_person"
+        android:title="@string/action_add_person"
+        android:orderInCategory="400" app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_person_add"/>
+
+</menu>
