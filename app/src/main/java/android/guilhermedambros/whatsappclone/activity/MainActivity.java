@@ -1,5 +1,6 @@
 package android.guilhermedambros.whatsappclone.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.guilhermedambros.whatsappclone.R;
 import android.guilhermedambros.whatsappclone.adapter.TabAdapter;
@@ -7,6 +8,7 @@ import android.guilhermedambros.whatsappclone.config.ConfiguracaoFirebase;
 import android.guilhermedambros.whatsappclone.helper.SlidingTabLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -15,6 +17,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -68,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 deslogarUsuario();
                 return true;
             case R.id.action_add_person:
+                abrirCadastroContato();
                 return true;
             case R.id.action_pesquisa:
                 return true;
@@ -81,7 +85,35 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void deslogarUsuario(){
+    private void abrirCadastroContato(){
+        AlertDialog.Builder alBuilder = new AlertDialog.Builder(MainActivity.this);
+
+        //config dialog
+        alBuilder.setTitle("Novo Contato");
+        alBuilder.setMessage("Email do usuário");
+        alBuilder.setCancelable(false);
+
+        //campo e-mail
+        EditText editText = new EditText(MainActivity.this);
+        alBuilder.setView(editText);
+
+        //config botoes
+        alBuilder.setPositiveButton("Cadastrar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        alBuilder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        })
+    }
+
+    private void deslogarUsuario(){
         autenticacao.signOut();
         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
         startActivity(intent);
