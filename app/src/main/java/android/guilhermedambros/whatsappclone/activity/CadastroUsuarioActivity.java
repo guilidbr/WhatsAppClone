@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.guilhermedambros.whatsappclone.Model.Usuario;
 import android.guilhermedambros.whatsappclone.config.ConfiguracaoFirebase;
 import android.guilhermedambros.whatsappclone.helper.Base64Custom;
+import android.guilhermedambros.whatsappclone.helper.Preferencias;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -67,6 +68,9 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
                     String identificadorUsuario = Base64Custom.codificarBase64(usuario.getEmail());
                     usuario.setId( identificadorUsuario );
                     usuario.salvar();
+
+                    Preferencias preferencias =  new Preferencias(CadastroUsuarioActivity.this);
+                    preferencias.salvarUsuarioPreferencias(identificadorUsuario);
 
                     abrirLoginUsuario();
 

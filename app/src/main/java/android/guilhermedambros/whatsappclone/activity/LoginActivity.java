@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.guilhermedambros.whatsappclone.Model.Usuario;
 import android.guilhermedambros.whatsappclone.config.ConfiguracaoFirebase;
+import android.guilhermedambros.whatsappclone.helper.Base64Custom;
 import android.guilhermedambros.whatsappclone.helper.Permissao;
 import android.guilhermedambros.whatsappclone.helper.Preferencias;
 import android.os.StrictMode;
@@ -86,6 +87,11 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
+
+                    Preferencias preferencias =  new Preferencias(LoginActivity.this);
+                    String identificadorUsuarioLogado = Base64Custom.codificarBase64(usuario.getEmail());
+                    preferencias.salvarUsuarioPreferencias(identificadorUsuarioLogado);
+
                     abrirTelaPrincipal();
                     Toast.makeText(LoginActivity.this, "Sucesso ao logar.", Toast.LENGTH_LONG).show();
 
