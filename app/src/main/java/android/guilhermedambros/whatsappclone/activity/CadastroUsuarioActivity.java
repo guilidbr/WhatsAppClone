@@ -1,7 +1,9 @@
 package android.guilhermedambros.whatsappclone.activity;
 
+import android.content.Intent;
 import android.guilhermedambros.whatsappclone.Model.Usuario;
 import android.guilhermedambros.whatsappclone.config.ConfiguracaoFirebase;
+import android.guilhermedambros.whatsappclone.helper.Base64Custom;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -62,12 +64,11 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
                 if( task.isSuccessful() ){
                     Toast.makeText(CadastroUsuarioActivity.this, "Sucesso ao cadastrar usuário", Toast.LENGTH_LONG ).show();
 
-                    FirebaseUser usuarioFirebase = task.getResult().getUser();
-                    usuario.setId( usuarioFirebase.getUid() );
+                    String identificadorUsuario = Base64Custom.codificarBase64(usuario.getEmail());
+                    usuario.setId( identificadorUsuario );
                     usuario.salvar();
 
-                    autenticacao.signOut();
-                    finish();
+                    abrirLoginUsuario();
 
                 }else {
                     String erroExcessao = "";
@@ -88,5 +89,11 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public  void abrirLoginUsuario(){
+        Intent intent = new Intent(CadastroUsuarioActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
