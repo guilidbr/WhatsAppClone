@@ -100,6 +100,12 @@ public class ContatosFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getActivity(), ConversaActivity.class);
+                //recupera dados a serem passados
+                Contato contato = contatos.get(position);
+
+                //envia dados para conversa
+                intent.putExtra("nome", contato.getNome());
+                intent.putExtra("email", contato.getEmail());
                 startActivity(intent);
             }
         });
