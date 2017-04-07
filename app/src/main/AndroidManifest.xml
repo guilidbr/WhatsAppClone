@@ -20,7 +20,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.MainActivity" />
-        <activity android:name=".activity.CadastroUsuarioActivity"></activity>
+        <activity android:name=".activity.CadastroUsuarioActivity" />
+        <activity android:parentActivityName=".activity.MainActivity"
+            android:name=".activity.ConversaActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.MainActivity"
+            ></meta-data>
+        </activity>
     </application>
 
 </manifest>
