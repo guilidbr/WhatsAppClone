@@ -27,9 +27,11 @@
             android:hint="Digite a mensagem aqui."
             android:textColorHint="@android:color/black"
             android:textColor="@android:color/black"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:id="@+id/edit_mensagem"/>
 
         <ImageButton
+            android:id="@+id/btn_enviar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_send"
