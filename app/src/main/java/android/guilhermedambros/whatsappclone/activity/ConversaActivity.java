@@ -113,8 +113,12 @@ public class ConversaActivity extends AppCompatActivity {
                     mensagem.setIdUsuario(idUsuarioRemetente);
                     mensagem.setMensagem(textoMensagem);
 
+                    //salando mensagem para o remetente
                     salvarMensagem(idUsuarioRemetente, idUsuarioDestinatario, mensagem);
 
+                    //salvando msgm para o destinatario
+                    salvarMensagem(idUsuarioDestinatario, idUsuarioRemetente, mensagem);
+                    
                     editMensagem.setText("");
 
                 }
