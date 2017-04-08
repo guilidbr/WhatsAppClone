@@ -56,7 +56,7 @@ public class ConversaActivity extends AppCompatActivity {
         //dados do usuario logado
         final Preferencias preferencias = new Preferencias(ConversaActivity.this);
         idUsuarioRemetente = preferencias.getIdentificador();
-        nomeUsuarioDestinatario = preferencias.getNome();
+        nomeUsuarioRemetente = preferencias.getNome();
 
         Bundle extra = getIntent().getExtras();
 
@@ -144,6 +144,7 @@ public class ConversaActivity extends AppCompatActivity {
                     conversa.setNome( nomeUsuarioDestinatario );
                     conversa.setMensagem(textoMensagem);
                     Boolean retornoConversaRemetente = salvarConversa(idUsuarioRemetente, idUsuarioDestinatario, conversa);
+
                     if (!retornoConversaRemetente){
                         Toast.makeText(
                                 ConversaActivity.this,
@@ -156,6 +157,7 @@ public class ConversaActivity extends AppCompatActivity {
                         conversa.setMensagem(textoMensagem);
                         //salvando msgm para o destinatario
                         Boolean retornoConversaDestinatario = salvarConversa(idUsuarioDestinatario, idUsuarioRemetente, conversa);
+
                         if (!retornoConversaDestinatario){
                             Toast.makeText(
                                     ConversaActivity.this,

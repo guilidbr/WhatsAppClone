@@ -1,9 +1,8 @@
 package android.guilhermedambros.whatsappclone.adapter;
 
 import android.content.Context;
-import android.guilhermedambros.whatsappclone.Model.Contato;
+import android.guilhermedambros.whatsappclone.Model.Conversa;
 import android.guilhermedambros.whatsappclone.R;
-import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -13,20 +12,18 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
- * Created by guili on 06/04/2017.
+ * Created by guili on 07/04/2017.
  */
 
-public class ContatoAdapter extends ArrayAdapter<Contato>{
-
-    private ArrayList<Contato> contatos;
+public class ConversaAdapter extends ArrayAdapter<Conversa> {
+    private ArrayList<Conversa> conversas;
     Context context;
 
-    public ContatoAdapter(Context c, ArrayList<Contato> objects) {
+    public ConversaAdapter(Context c, ArrayList<Conversa> objects) {
         super(c, 0, objects);
-        this.contatos = objects;
+        this.conversas = objects;
         this.context = c;
     }
 
@@ -35,21 +32,20 @@ public class ContatoAdapter extends ArrayAdapter<Contato>{
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View view = null;
 
-        //verifica se a lista esta vazia
-        if (contatos != null){
-            //inicializar o objeto para montar a view
+        if (conversas != null) {
+//inicializar o objeto para montar a view
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-             //monta a view a partir do xml
+            //monta a view a partir do xml
             view = inflater.inflate(R.layout.listagem_padrao, parent, false);
 
             //recupera elemento para exibição
-            TextView nomeContato = (TextView) view.findViewById(R.id.tv_titulo);
-            TextView emailContato = (TextView) view.findViewById(R.id.tv_subtitulo);
-            Contato contato = contatos.get(position);
-            nomeContato.setText(contato.getNome());
-            emailContato.setText(contato.getEmail());
-        }
+            TextView titulo = (TextView) view.findViewById(R.id.tv_titulo);//nome do contato
+            TextView subtitulo = (TextView) view.findViewById(R.id.tv_subtitulo);//ultima mensagem
 
+            Conversa conversa = conversas.get(position);
+            titulo.setText(conversa.getNome());
+            subtitulo.setText(conversa.getMensagem());
+        }
         return view;
     }
 }
